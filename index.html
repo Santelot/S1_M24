@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                 document.getElementById('activity-2').style.display = 'none';
+                 document.getElementById('activity-1').style.display = 'none';
+                document.getElementById('activity-5').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - S1 - M24</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Bienvenida y preparación para el desafío de impresión 3D.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy vamos a llevar nuestros diseños al mundo real.  Tendremos la oportunidad de imprimir en nuestras impresoras 3D los diseños que prepararon en la misión anterior y al mismo tiempo, crearán sus propias versiones de un objeto que es ícono en la impresión 3D. Prepárense para ver cómo sus ideas toman forma."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo están?".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de empezar, quiero saber cómo se sienten hoy. Si están listos para imprimir, levanten ambos brazos. Si necesitan un momento para concentrarse, crucen sus brazos sobre el pecho."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Juntemos nuestras manos en agradecimiento por esta oportunidad de aprender y crear juntos. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos dos objetivos: 1. Imprimir los llaveros que prepararon en la clase anterior. 2. Diseñar una versión propia de un ‘Benchie’ en TinkerCAD."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🖐️ Actividad 2: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Actividad para mejorar la concentración y relajación.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                 <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Manos Mágicas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a hacer una pausa para relajar nuestros sentidos. Froten sus manos rápidamente hasta que sientan calor, luego coloquen las palmas sobre sus ojos cerrados por 15 segundos. Esto les ayudará a relajar la vista y a enfocarse mejor en la actividad."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 7 "Cronómetro - 15 segundos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+             <tr>
+                 <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre Manos Mágicas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Muy bien! Este pequeño ejercicio ayuda a relajar la vista y a enfocar nuestra atención. Ahora estamos listos para diseñar y para imprimir nuestros proyectos."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 3: Team Gnius ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Formación de equipos para la rotación en impresoras y diseño.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                 <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 9 "Formación de 6 Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, para esta actividad formen 6 equipos.  Los equipos 1, 2 y 3 comenzarán imprimiendo sus llaveros, mientras que los equipos 4, 5 y 6 diseñarán sus Benchies.   En la segunda mitad de la clase, intercambiaremos los roles: los equipos que imprimieron, diseñarán y los que diseñaron, podrán imprimir.  Tómense un minuto para organizar los equipos y sentarse en sus áreas designadas."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Cronómetro - 1 minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 11 "Distribución de Tareas".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Los equipos 1, 2 y 3 pasen a la zona de las impresoras y preparen sus archivos para la impresión. Los equipos 4, 5 y 6 pueden abrir TinkerCAD y comenzar a diseñar su versión del Benchy. Recuerden que la organización y la colaboración son la clave del éxito."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 4: Challenge ⏰ Tiempo: 37.5 minutos</div>
+        <div class="subtitle">Impresión de llaveros y diseño de Benchies.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+             <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 12 "Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ha llegado el momento de la acción. En este reto, tendrán la oportunidad de imprimir sus llaveros y de diseñar un Benchy.  Vamos a poner en práctica todo lo aprendido sobre diseño e impresión 3D."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 13 "Rotación de Equipos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Los equipos 1, 2 y 3 empezarán la primera mitad de la clase imprimiendo sus llaveros. Usen AstroPrint para preparar sus archivos y comenzar la impresión. Por otro lado, los equipos 4, 5 y 6 comenzarán con el diseño de sus propias versiones del Benchy. El Benchy es un pequeño barco que se utiliza como modelo de prueba para impresoras 3D. Tómense su tiempo para diseñar y crear algo único. Asegúrense de usar todas las herramientas de TinkerCAD para darle su propio estilo.  Recuerden que la precisión y la creatividad son la clave de todo el proceso."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 3 (15 minutos):</strong> Proyectar Diapositiva 14 "Cronómetro - 15 minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 15 "Intercambio de Roles".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Cambio de roles! Ahora, los equipos que estaban imprimiendo, pasarán al área de diseño y los equipos que estaban diseñando pasarán al área de impresión. Tómense un minuto para hacer el cambio."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 5 (1 minuto):</strong> Proyectar Diapositiva 16 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 6 (15 minutos):</strong> Proyectar Diapositiva 17 "Segunda Mitad del Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, los equipos 4, 5 y 6 que estaban diseñando, pasen a la zona de las impresoras para imprimir sus llaveros. Los equipos 1, 2 y 3 pueden usar TinkerCAD para crear sus Benchies. Recuerden que el Benchy debe ser una versión personalizada y propia. Este es su momento para mostrar su creatividad y dominio de las herramientas."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (3 minutos):</strong> Proyectar Diapositiva 18 "Cronómetro - 3 Minutos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 8 (1 minuto):</strong> Proyectar Diapositiva 19 "Objetivos Alcanzados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos cumplido los objetivos de hoy.  Han impreso sus llaveros y han diseñado una versión personalizada del Benchy. ¡Excelente trabajo, Genios!"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 9 (0.5 minutos):</strong> Proyectar Diapositiva 20 "You've Got Mon-e".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Felicidades, Genios!  Han demostrado su capacidad para crear y para gestionar el proceso de impresión 3D.  Todos se llevan Mon-e por su esfuerzo y dedicación. ¡Sigan explorando el mundo de la impresión 3D!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🎖️ Actividad 5: Honor de Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Cierre de la clase y orden del espacio de trabajo.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 21 "Honor the Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ha llegado el momento de finalizar la misión de hoy. Por favor, asegúrense de dejar sus áreas de trabajo limpias y organizadas.  Recuerden que el respeto por nuestro espacio es una parte fundamental de nuestra comunidad de aprendizaje.  ¡Gracias por su colaboración!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
